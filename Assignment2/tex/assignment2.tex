@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Assignment 2}
+\author{
+  Nikhil Vemula \\
+  \scriptsize{Ami Sharma, Shreeja Deshpande, Atharva Pore}
+}
+\date{\today}
+
+\begin{document}
+  \maketitle
+  \footnote{}
+
+  \section*{Problem 10.a}
+
+  % select bno, title from book
+  % EXCEPT
+  % select distinct bno, title from book b natural join (
+  %   select  t1.bno as bno from buys t1 join buys t2 on (t1.bno = t2.bno and t1.sid <> t2.sid)
+  % ) q;
+  \tiny{
+    $\pi_{B.bno, B.title}(B) -
+    \pi_{B_1.bno, B_1.title}(B_1 \bowtie_{B_1.bno=T_1.bno}(T_1 \bowtie_{T_1.bno = T_2.bno \land T1.sid \neq T_2.sid} T_2))$
+  }
+
+  \section*{Problem 11.a}
+
+  % select distinct h.major, t.bno from hasMajor h join buys t on t.sid = h.sid join book b on t.bno = b.bno
+  % EXCEPT
+  % select distinct h.major, t.bno from hasMajor h join buys t on t.sid = h.sid join book b on t.bno = b.bno join hasMajor h1 on h.major=h1.major join buys t1 on t1.sid = h1.sid join book b1 on t1.bno = b1.bno and b.price > b1.price
+  
+  \tiny{
+    $\pi_{hM.major, T.bno}(hM \bowtie_{T.sid=hM.sid}(T \bowtie_{T.bno=B.bno} B)) 
+    - \\
+    \pi_{hM.major, T.bno}(hM \bowtie_{T.sid=hM.sid}(T \bowtie_{T.bno=B.bno} (B \bowtie_{hM.major=hM_1.major}(hM_1 \bowtie_{T_1.sid=hM_1.sid}(T_1 \bowtie_{T_1.bno=B_1.bno \land B.price > B_1.price}(B_1))))))$
+  }
+
+  \section*{Problem 12.a}
+  
+  \section*{Problem 13.a}
+
+  \section*{Problem 14.a}
+  
+  \section*{Problem 19}
+
+  \tiny{
+    $\pi_{c_1.bno1}(
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(\sigma_{c_1.bno2=c_2.bno2}(cites_1 \times cites_2)) \\
+      \cap
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(\sigma_{c_1.bno1 \neq c_2.bno1}(cites_1 \times cites_2)) \\
+      \cap
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(cites_1 \times cites_2) 
+        - \\
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(\sigma_{c_1.bno1=c_3.bno1}(cites_1 \times cites_2 \times cites_3))
+            \cap \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}()
+            - \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_2.bno1=c_4.bno1}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+              \cap
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_3.bno2=c_4.bno2}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+            )
+          )
+        )
+      )
+      \cap \\
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(cites_1 \times cites_2) 
+        - \\
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(\sigma_{c_2.bno1=c_3.bno1}(cites_1 \times cites_2 \times cites_3))
+          \cap \\
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}()
+            - \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_1.bno1=c_4.bno1}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+              \cap \\
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_3.bno2=c_4.bno2}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+            )
+          )
+        )
+      )
+    ) \neq \emptyset$
+  }
+
+  \vspace{10pt}
+  \noindent\small{SQL}
+
+  \tiny{
+    \begin{verbatim}
+    select q.c1b1 from (
+      select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2  from cites c1, cites c2 where c1.bno2 = c2.bno2
+      INTERSECT
+      select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2 from cites c1, cites c2 where c1.bno1 <> c2.bno1
+      INTERSECT
+      select q1.c1b1, q1.c1b2, q1.c2b1, q1.c2b2 from (
+        select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2 from cites c1, cites c2
+        EXCEPT
+        select q3.c1b1, q3.c1b2, q3.c2b1, q3.c2b2 from (
+          select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2 from cites c1, cites c2, cites c3 where c1.bno1 = c3.bno1
+          INTERSECT
+          select q5.c1b1, q5.c1b2, q5.c2b1, q5.c2b2, q5.c3b1, q5.c3b2 from (
+            select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2 from cites c1, cites c2, cites c3
+            EXCEPT
+            select q6.c1b1, q6.c1b2, q6.c2b1, q6.c2b2, q6.c3b1, q6.c3b2 from (
+              select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2, c4.bno1 as c4b1, c4.bno2 as c4b2 from cites c1, cites c2, cites c3, cites c4 where c2.bno1=c4.bno1 
+              INTERSECT
+              select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2, c4.bno1 as c4b1, c4.bno2 as c4b2 from cites c1, cites c2, cites c3, cites c4 where c3.bno2=c4.bno2
+            ) q6
+          ) q5
+        ) q3
+      ) q1
+      INTERSECT
+      select q2.c1b1, q2.c1b2, q2.c2b1, q2.c2b2 from (
+        select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2 from cites c1, cites c2
+        EXCEPT
+        select q4.c1b1, q4.c1b2, q4.c2b1, q4.c2b2 from (
+          select  c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2 from cites c1, cites c2, cites c3 where c2.bno1 = c3.bno1
+          INTERSECT
+          select q8.c1b1, q8.c1b2, q8.c2b1, q8.c2b2, q8.c3b1, q8.c3b2 from (
+            select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2 from cites c1, cites c2, cites c3
+            EXCEPT
+            select q7.c1b1, q7.c1b2, q7.c2b1, q7.c2b2, q7.c3b1, q7.c3b2 from (
+              select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2, c4.bno1 as c4b1, c4.bno2 as c4b2 from cites c1, cites c2, cites c3, cites c4 where c1.bno1=c4.bno1 
+              INTERSECT
+              select c1.bno1 as c1b1, c1.bno2 as c1b2, c2.bno1 as c2b1, c2.bno2 as c2b2, c3.bno1 as c3b1, c3.bno2 as c3b2, c4.bno1 as c4b1, c4.bno2 as c4b2 from cites c1, cites c2, cites c3, cites c4 where c3.bno2=c4.bno2
+            ) q7
+          ) q8
+        ) q4
+      ) q2
+    ) q;
+    \end{verbatim}
+  }
+
+  \section*{Problem 20}
+
+  $
+  \pi_{h.sid}(
+    \pi_{h.sid, h.major}(hasMajor) 
+    - \\
+    \pi_{h.sid, h.major}(
+      \pi_{h.sid, h.major, b.sid, b,bno}(\sigma_{b.sid=h.sid}(hasMajor \times buys))
+      \cap \\
+      \pi_{h.sid, h.major, b.sid, b.bno}(
+        \pi_{h.sid, h.major, b.sid, b.bno}(hasMajor \times buys)
+        - \\
+        \pi_{h.sid, h.major, b.sid, b.bno}(\sigma_{h_1.sid<>h.sid \land b_1.sid=h_1.sid \land h_1.major=\mathtt{Math}}(hasMajor \times buys \times hasMajor_1 \times buys_1))
+      )
+    )
+  ) \neq \emptyset
+  $
+
+  \vspace{10pt}
+  \noindent\small{SQL}
+
+  \tiny{
+  \begin{verbatim}
+    select distinct q.sid from (
+      select h.sid, h.major from hasMajor h
+      EXCEPT
+      select q1.hsid, q1.major from (
+        select h.sid as hsid, h.major, b.sid as bsid, b.bno from hasMajor h, buys b where b.sid=h.sid
+        INTERSECT
+        select q2.hsid, q2.major, q2.bsid, q2.bno from (
+          select h.sid as hsid, h.major, b.sid as bsid, b.bno from hasMajor h, buys b
+          EXCEPT
+          select h.sid as hsid, h.major, b.sid as bsid, b.bno from hasMajor h, buys b, hasMajor h1, buys b1 where b1.sid=h1.sid and h1.major='Math' and b1.bno=b.bno
+        ) q2
+      ) q1
+    ) q;
+  \end{verbatim}
+  }
+
+  \section*{Problem 21}
+
+  $
+  \pi_{m_1.major, m_2.major}(
+    \pi_{m_1.major, m_2.major}(\sigma_{m_1.major \neq m_2.major}(major_1 \times major_2))
+    \cap \\
+    \pi_{m_1.major, m_2.major}(
+      \pi_{m_1.major, m_2.major}(major_1 \times major_2)
+      - \\
+      \pi_{m_1.major, m_2.major}(
+        \pi_{m_1.major, m_2.major, h_1.major}(\sigma_{h_1.major=m_1.major}(major_1 \times major_2 \times hasMajor_1))
+        \cap \\
+        \pi_{{m_1.major, m_2.major, h_1.major}(\sigma_{h_2.major=m_2.major and h_1.sid=h2.sid}(h_1.major=m_1.major}(major_1 \times major_2 \times hasMajor_1 \times hasMajor_2))
+      )
+    )
+  ) \neq \emptyset
+  $
+
+  \vspace{10pt}
+  \noindent\small{SQL}
+
+  \tiny{
+  \begin{verbatim}
+    select q.m1, q.m2 from (
+      select m1.major as m1, m2.major as m2 from major m1, major m2 where m1.major<>m2.major
+      INTERSECT
+      select m1.major as m1, m2.major as m2 from major m1, major m2 
+      EXCEPT
+      select q1.m1, q1.m2 from (
+        select m1.major as m1, m2.major as m2, h1.sid, h1.major from major m1, major m2, hasMajor h1 where h1.major=m1.major
+        INTERSECT
+        select m1.major as m1, m2.major as m2, h1.sid, h1.major from major m1, major m2, hasMajor h1, hasMajor h2 where h2.major=m2.major and h1.sid=h2.sid
+      ) q1
+    ) q;
+  \end{verbatim}
+  }
+
+  \section*{Problem 22}
+
+  $
+  \pi_{h.sid}(\pi_{h.sid}(hasMajor) - \pi_{h.sid}(\sigma_{h.sid=s.sid}(hasMajor \times student))) = \emptyset
+  $
+
+  \vspace{10pt}
+  \noindent\small{SQL}
+
+  \tiny{
+  \begin{verbatim}
+    select h.sid from hasMajor h where true=all(
+      select h.sid <> s.sid from student s
+    );
+  \end{verbatim}
+  }
+
+\end{document}

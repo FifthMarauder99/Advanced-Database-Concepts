@@ -1,0 +1,43 @@
+\tiny{
+    $\pi_{c_1.bno1}(
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(\sigma_{c_1.bno2=c_2.bno2}(cites_1 \times cites_2)) \\
+      \cap
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(\sigma_{c_1.bno1 \neq c_2.bno1}(cites_1 \times cites_2)) \\
+      \cap
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(cites_1 \times cites_2) 
+        - \\
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(\sigma_{c_1.bno1=c_3.bno1}(cites_1 \times cites_2 \times cites_3))
+            \cap \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}()
+            - \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_2.bno1=c_4.bno1}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+              \cap
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_3.bno2=c_4.bno2}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+            )
+          )
+        )
+      )
+      \cap \\
+      \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c_2.bno2}(
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(cites_1 \times cites_2) 
+        - \\
+        \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2}(
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(\sigma_{c_2.bno1=c_3.bno1}(cites_1 \times cites_2 \times cites_3))
+          \cap \\
+          \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}()
+            - \\
+            \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2}(
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_1.bno1=c_4.bno1}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+              \cap \\
+              \pi_{c_1.bno1, c_1.bno2, c_2.bno1, c2_bno2, c_3.bno1, c_3.bno2, c_4.bno1, c_4.bno2}(\sigma_{c_3.bno2=c_4.bno2}(cites_1 \times cites_2 \times cites_3 \times cites_4))
+            )
+          )
+        )
+      )
+    ) \neq \emptyset$
+  }

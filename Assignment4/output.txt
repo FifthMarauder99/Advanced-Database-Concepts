@@ -1,0 +1,524 @@
+CREATE DATABASE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+DELETE 0
+DELETE 0
+DELETE 0
+DELETE 0
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DELETE 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+ cname  |  city   
+--------+---------
+ Amazon | Seattle
+ Apple  | Seattle
+(2 rows)
+
+ pid  | cname 
+------+-------
+ 1002 | Apple
+(1 row)
+
+DELETE 1
+ cname  |  city   
+--------+---------
+ Amazon | Seattle
+(1 row)
+
+ pid | cname 
+-----+-------
+(0 rows)
+
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+DELETE 4
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ p | n | c 
+---+---+---
+(0 rows)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 1
+(1 row)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 2
+(1 row)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 3
+(1 row)
+
+INSERT 0 1
+  p   |    n    | c 
+------+---------+---
+ 1005 | Nikhil  | 3
+ 1006 | Shreeja | 1
+(2 rows)
+
+CREATE FUNCTION
+CREATE TRIGGER
+  p   |    n    | c 
+------+---------+---
+ 1005 | Nikhil  | 3
+ 1006 | Shreeja | 1
+(2 rows)
+
+DELETE 1
+  p   |    n    | c 
+------+---------+---
+ 1006 | Shreeja | 1
+ 1005 | Nikhil  | 2
+(2 rows)
+
+DELETE 1
+  p   |    n    | c 
+------+---------+---
+ 1006 | Shreeja | 1
+ 1005 | Nikhil  | 1
+(2 rows)
+
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 19
+INSERT 0 4
+INSERT 0 2
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+DELETE 0
+DELETE 0
+INSERT 0 1
+INSERT 0 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 561 | ADC            |     0 |   5
+ 651 | NLP            |     1 |   5
+(4 rows)
+
+ sid  | cno 
+------+-----
+ 1001 | 651
+(1 row)
+
+INSERT 0 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     1 |   5
+(4 rows)
+
+INSERT 0 4
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+INSERT 0 0
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1003 | 561
+ 1004 | 561
+ 1005 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1006 | 561 |        1
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(3 rows)
+
+CREATE FUNCTION
+CREATE TRIGGER
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1003 | 561
+ 1004 | 561
+ 1005 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1006 | 561 |        1
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(3 rows)
+
+DELETE 1
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1004 | 561
+ 1005 | 561
+ 1006 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(2 rows)
+
+DELETE 1
+DELETE 1
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1002 | 561
+ 1004 | 561
+ 1006 | 561
+ 1007 | 561
+ 1008 | 561
+(6 rows)
+
+ sid | cno | position 
+-----+-----+----------
+(0 rows)
+
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+DELETE 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     4 |   5
+(4 rows)
+
+DROP DATABASE
+CREATE DATABASE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+DELETE 0
+DELETE 0
+DELETE 0
+DELETE 0
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DELETE 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+CREATE FUNCTION
+CREATE TRIGGER
+INSERT 0 1
+INSERT 0 1
+ cname  |  city   
+--------+---------
+ Amazon | Seattle
+ Apple  | Seattle
+(2 rows)
+
+ pid  | cname 
+------+-------
+ 1002 | Apple
+(1 row)
+
+DELETE 1
+ cname  |  city   
+--------+---------
+ Amazon | Seattle
+(1 row)
+
+ pid | cname 
+-----+-------
+(0 rows)
+
+CREATE TABLE
+CREATE FUNCTION
+CREATE TRIGGER
+DELETE 4
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+ p | n | c 
+---+---+---
+(0 rows)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 1
+(1 row)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 2
+(1 row)
+
+INSERT 0 1
+  p   |   n    | c 
+------+--------+---
+ 1005 | Nikhil | 3
+(1 row)
+
+INSERT 0 1
+  p   |    n    | c 
+------+---------+---
+ 1005 | Nikhil  | 3
+ 1006 | Shreeja | 1
+(2 rows)
+
+CREATE FUNCTION
+CREATE TRIGGER
+  p   |    n    | c 
+------+---------+---
+ 1005 | Nikhil  | 3
+ 1006 | Shreeja | 1
+(2 rows)
+
+DELETE 1
+  p   |    n    | c 
+------+---------+---
+ 1006 | Shreeja | 1
+ 1005 | Nikhil  | 2
+(2 rows)
+
+DELETE 1
+  p   |    n    | c 
+------+---------+---
+ 1006 | Shreeja | 1
+ 1005 | Nikhil  | 1
+(2 rows)
+
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 19
+INSERT 0 4
+INSERT 0 2
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE TRIGGER
+DELETE 0
+DELETE 0
+INSERT 0 1
+INSERT 0 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 561 | ADC            |     0 |   5
+ 651 | NLP            |     1 |   5
+(4 rows)
+
+ sid  | cno 
+------+-----
+ 1001 | 651
+(1 row)
+
+INSERT 0 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     1 |   5
+(4 rows)
+
+INSERT 0 4
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+INSERT 0 0
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1003 | 561
+ 1004 | 561
+ 1005 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1006 | 561 |        1
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(3 rows)
+
+CREATE FUNCTION
+CREATE TRIGGER
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1003 | 561
+ 1004 | 561
+ 1005 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1006 | 561 |        1
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(3 rows)
+
+DELETE 1
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1001 | 561
+ 1002 | 561
+ 1004 | 561
+ 1005 | 561
+ 1006 | 561
+(6 rows)
+
+ sid  | cno | position 
+------+-----+----------
+ 1007 | 561 |        2
+ 1008 | 561 |        3
+(2 rows)
+
+DELETE 1
+DELETE 1
+ sid  | cno 
+------+-----
+ 1001 | 651
+ 1002 | 561
+ 1004 | 561
+ 1006 | 561
+ 1007 | 561
+ 1008 | 561
+(6 rows)
+
+ sid | cno | position 
+-----+-----+----------
+(0 rows)
+
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     5 |   5
+(4 rows)
+
+DELETE 1
+ cno |     cname      | total | max 
+-----+----------------+-------+-----
+ 551 | EAI            |     0 |   5
+ 657 | ComputerVision |     0 |   5
+ 651 | NLP            |     1 |   5
+ 561 | ADC            |     4 |   5
+(4 rows)
+
+DROP DATABASE
