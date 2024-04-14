@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{enumitem}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+
+\usepackage{color}
+
+
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\green}[1]{{\color{green}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\SFW}[3]{{\color{blue}}}
+
+\newcommand{\redbullet}{$\red{\bullet}$}
+\newcommand{\bluebullet}{$\blue{\bullet}$}
+
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Fall 2022 B561 Assignment 1}
+\author{Nikhil Vemula}
+
+\maketitle
+
+\section{Formulating queries in the safe Tuple Relational Calculus}
+
+\subsection*{20.a (Problem 2)}
+Find each pair (d,m) where d is the name of a department and m is a major of a student who is employed by that department and who earns a salary of at least 20000.
+\vspace{10pt}
+
+$\{(e.deptname, sm.major) \mid employedBy(e) \land studentmajor(m) \land \\ 
+e.sid = m.sid \land e.salary >= 20000\}$
+
+\subsection*{20.b (Problem 3)}
+Find each pair (s1 , s2) of sids of different students who have the same (set of) friends who work for the CS department.
+\vspace{10pt}
+
+$\{(s_1.sid, s_2.sid) \mid student(s_1) \land student(s_2) \land s_1.sid \neq s_2.sid \land \\
+\forall s_3 \in student(hasFriend(s1_sid, s_3.sid) \rightarrow hasFriend(s2_sid, s_3.sid) \\
+\land employedBy(e_1) \land e_1.sid = s_3.sid \land e_1.deptname=\mathtt{CS}) \land \\ 
+\forall s_4 \in student(hasFriend(s2_sid, s_4.sid) \rightarrow hasFriend(s1_sid, s_4.sid) \\
+\land employedBy(e_2) \land e_2.sid = s_4.sid \land e_2.deptname=\mathtt{CS})\}$
+
+\subsection*{20.c (Problem 4)}
+Find each major for which there exists a student with that major and who does not only have friends who also have that major.
+\vspace{10pt}
+
+$\{(sm_1.major \mid studentmajor(sm_1) \land \\
+\exists s \in student(sm_1.sid=s.sid \land \exists f \in hasFriend \exists sm_2 \in studentmajor(f.sid_1=s.sid \land f.sid2=sm_2.sid \land sm_1.major \neq sm_2.major)))\}$
+
+\section{Formulating constraints in the safe Tuple Relational Calculus and as boolean SQL and Python queries}
+
+\subsection*{22.a}
+Some major has fewer than 2 students with that major.
+\vspace{10pt}
+
+% $HasMajor(s, m): \exists sm \in studentmajor(sm.sid = s.sid \land \\
+% sm.major=m.major)$
+% \vspace{10pt}
+
+% $\exists m \in major(\exists s_1 \in student(HasMajor(s_1, m) \rightarrow \\
+% \exists s_2 \in student(s_1 \neq s_2 \land HasMajor(s_2, m) \rightarrow \\
+% \nexists s_3 \in student(s_1 \neq s_2 \neq s_3 \land HasMajor(s_3, m))
+% )))$
+
+% select true = some(
+%      select not true = some(
+%           select sm1.sid = s1.sid and sm1.major = m.major from student s1, studentmajor sm1
+%      ) or true = some(
+%           select sm2.sid = s2.sid and sm2.major = m.major and not true = some(
+%                     select s3.sid<>s2.sid and sm3.sid=s3.sid and sm3.major = m.major from student s3, studentmajor sm3
+%                )from student s2, studentmajor sm2 
+%           )
+%      from major m
+% );
+
+Explanation: For major fewer than two student we can consider majors with zero students or majors with exactly one students enrolled.
+\vspace{10pt}
+
+% $\exists m \in major(\nexists s_1 \in student \exists sm_1 \in studentmajor(sm_1.sid=s_1.sid \land \\
+% sm_1.major=m.major) \lor (\exists s_2 \in student \exists sm_2 \in studentmajor(sm_2.sid=s_2.sid \land sm_2.major=m.major \land \nexists s_3 \in student \exists sm_3 \in studentmajor(s_3.sid \neq s_2.sid \land sm_3.sid=s_3.sid \land sm_3.major=m.major))))$ 
+
+$\exists m(major(m) \land \nexists s_1(student(s_1) \land studentmajor(sm_1) \land sm_1.sid=s_1.sid \land \\
+sm_1.major=m.major \lor (\exists s_2 (student(s_2) \land studentmajor(sm_2) \land sm_2.sid=s_2.sid \land sm_2.major=m.major \land \nexists s_3 (student(s_3) \land studentmajor(sm_3) \land s_3.sid \neq s_2.sid \land sm_3.sid=s_3.sid \land sm_3.major=m.major)))))$ 
+
+\subsection*{23.a}
+Each student who works for a department has a friend who also works for that department and who earns the same salary.
+\vspace{10pt}
+
+$\forall s (student(s) \land employedBy(e) \land (s.sid=e.sid \rightarrow \\
+\exists s_1 (student(s_1) \land employedBy(e_1) \land hasFriend(s.sid, s_1.sid) \land s1.sid \neq s.sid \land e1.salary=e.salary \land e1.deptname=e.deptname)))$
+
+
+\subsection*{24.a}
+All students working in a same department share a major and earn the same salary
+\vspace{10pt}
+
+% $\forall s_1 \in student \exists e_1 \in employedBy \exists sm_1 \in studentmajor(s_1.sid=e_1.sid \land \\
+% s_1.sid=sm_1.sid \land \forall s_2 \in student \exists e_2 \in employedBy \exists sm_2 \in studentmajor(\\
+% s_1.sid \neq s_2.sid \land s_1.sid=e_1.sid \land s_1.sid=sm_2.sid \rightarrow sm_1.major=sm_2.major \land e_1.salary=e_2.salary)$
+
+$\forall s_1 (student(s_1) \land employedBy(e_1) \land studentmajor(sm_1) \land s_1.sid=e_1.sid \land \\
+s_1.sid=sm_1.sid \land \forall s_2 ((student(s_2) \land employedBy(e_2) \land studentmajor(sm_2) \land \\
+(s_1.sid \neq s_2.sid \land s_1.sid=e_1.sid \land s_1.sid=sm_2.sid \rightarrow sm_1.major=sm_2.major \land e_1.salary=e_2.salary))$
+
+\end{document}
