@@ -1,0 +1,73 @@
+100000
+VACUUM
+ makepersonskill 
+-----------------
+ 
+(1 row)
+
+                                                   queryplan                                                   
+---------------------------------------------------------------------------------------------------------------
+ Seq Scan on personskill  (cost=0.00..1267.88 rows=311 width=4) (actual time=0.021..12.779 rows=18164 loops=1)
+   Filter: (skill = 'AI'::text)
+   Rows Removed by Filter: 72474
+ Planning Time: 0.102 ms
+ Execution Time: 14.084 ms
+(5 rows)
+
+1000000
+VACUUM
+ makepersonskill 
+-----------------
+ 
+(1 row)
+
+                                                           queryplan                                                           
+-------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..9435.03 rows=3105 width=4) (actual time=0.105..56.305 rows=181256 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on personskill  (cost=0.00..8124.53 rows=1294 width=4) (actual time=0.019..38.704 rows=60419 loops=3)
+         Filter: (skill = 'AI'::text)
+         Rows Removed by Filter: 241608
+ Planning Time: 0.052 ms
+ Execution Time: 66.503 ms
+(8 rows)
+
+10000000
+VACUUM
+ makepersonskill 
+-----------------
+ 
+(1 row)
+
+                                                             queryplan                                                             
+-----------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..85360.78 rows=31055 width=4) (actual time=0.134..534.858 rows=1812252 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on personskill  (cost=0.00..81255.28 rows=12940 width=4) (actual time=0.034..427.019 rows=604084 loops=3)
+         Filter: (skill = 'AI'::text)
+         Rows Removed by Filter: 2416760
+ Planning Time: 0.112 ms
+ Execution Time: 638.016 ms
+(8 rows)
+
+100000000
+VACUUM
+ makepersonskill 
+-----------------
+ 
+(1 row)
+
+                                                               queryplan                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+ Gather  (cost=1000.00..844639.22 rows=310565 width=4) (actual time=0.435..7873.528 rows=18120053 loops=1)
+   Workers Planned: 2
+   Workers Launched: 2
+   ->  Parallel Seq Scan on personskill  (cost=0.00..812582.72 rows=129402 width=4) (actual time=0.145..6993.639 rows=6040018 loops=3)
+         Filter: (skill = 'AI'::text)
+         Rows Removed by Filter: 24171329
+ Planning Time: 1.061 ms
+ Execution Time: 8872.365 ms
+(8 rows)
+

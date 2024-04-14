@@ -1,0 +1,147 @@
+SET
+SET
+10
+ makes 
+-------
+ 
+(1 row)
+
+VACUUM
+                                            QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ Sort  (cost=1.27..1.29 rows=10 width=4) (actual time=0.014..0.016 rows=10 loops=1)
+   Sort Key: x
+   Sort Method: quicksort  Memory: 25kB
+   ->  Seq Scan on s  (cost=0.00..1.10 rows=10 width=4) (actual time=0.007..0.009 rows=10 loops=1)
+ Planning Time: 0.201 ms
+ Execution Time: 0.025 ms
+(6 rows)
+
+100
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                              QUERY PLAN                                               
+-------------------------------------------------------------------------------------------------------
+ Sort  (cost=214.78..221.16 rows=2550 width=4) (actual time=0.046..0.056 rows=100 loops=1)
+   Sort Key: x
+   Sort Method: quicksort  Memory: 29kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.011..0.022 rows=100 loops=1)
+ Planning Time: 0.243 ms
+ Execution Time: 0.071 ms
+(6 rows)
+
+1000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                               QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ Sort  (cost=214.78..221.16 rows=2550 width=4) (actual time=0.982..1.215 rows=1000 loops=1)
+   Sort Key: x
+   Sort Method: external merge  Disk: 24kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.032..0.260 rows=1000 loops=1)
+ Planning Time: 0.317 ms
+ Execution Time: 1.666 ms
+(6 rows)
+
+10000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                                QUERY PLAN                                                 
+-----------------------------------------------------------------------------------------------------------
+ Sort  (cost=1091.02..1119.71 rows=11475 width=4) (actual time=4.288..5.654 rows=10000 loops=1)
+   Sort Key: x
+   Sort Method: external merge  Disk: 144kB
+   ->  Seq Scan on s  (cost=0.00..159.75 rows=11475 width=4) (actual time=0.012..1.208 rows=10000 loops=1)
+ Planning Time: 0.169 ms
+ Execution Time: 6.557 ms
+(6 rows)
+
+100000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                                  QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ Sort  (cost=15694.53..15976.94 rows=112965 width=4) (actual time=101.454..121.219 rows=100000 loops=1)
+   Sort Key: x
+   Sort Method: external merge  Disk: 1400kB
+   ->  Seq Scan on s  (cost=0.00..1572.65 rows=112965 width=4) (actual time=0.010..10.632 rows=100000 loops=1)
+ Planning Time: 0.153 ms
+ Execution Time: 129.224 ms
+(6 rows)
+
+1000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                                           QUERY PLAN                                                           
+--------------------------------------------------------------------------------------------------------------------------------
+ Gather Merge  (cost=80139.82..189850.54 rows=940312 width=4) (actual time=1110.929..1431.761 rows=1000000 loops=1)
+   Workers Planned: 2
+   Workers Launched: 0
+   ->  Sort  (cost=79139.79..80315.18 rows=470156 width=4) (actual time=1110.825..1283.870 rows=1000000 loops=1)
+         Sort Key: x
+         Sort Method: external merge  Disk: 13728kB
+         ->  Parallel Seq Scan on s  (cost=0.00..9126.56 rows=470156 width=4) (actual time=0.013..186.415 rows=1000000 loops=1)
+ Planning Time: 0.220 ms
+ Execution Time: 1511.797 ms
+(9 rows)
+
+10000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                                             QUERY PLAN                                                             
+------------------------------------------------------------------------------------------------------------------------------------
+ Gather Merge  (cost=934667.76..2031726.02 rows=9402700 width=4) (actual time=13123.155..16763.745 rows=10000000 loops=1)
+   Workers Planned: 2
+   Workers Launched: 0
+   ->  Sort  (cost=933667.74..945421.11 rows=4701350 width=4) (actual time=13123.012..15060.461 rows=10000000 loops=1)
+         Sort Key: x
+         Sort Method: external merge  Disk: 137064kB
+         ->  Parallel Seq Scan on s  (cost=0.00..91261.50 rows=4701350 width=4) (actual time=0.024..1933.054 rows=10000000 loops=1)
+ Planning Time: 0.349 ms
+ Execution Time: 17684.877 ms
+(9 rows)
+
+100000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+                                                               QUERY PLAN                                                               
+----------------------------------------------------------------------------------------------------------------------------------------
+ Gather Merge  (cost=10761213.06..21731746.18 rows=94026576 width=4) (actual time=176804.004..212902.320 rows=100000000 loops=1)
+   Workers Planned: 2
+   Workers Launched: 0
+   ->  Sort  (cost=10760213.04..10877746.26 rows=47013288 width=4) (actual time=176803.874..195995.663 rows=100000000 loops=1)
+         Sort Key: x
+         Sort Method: external merge  Disk: 1370344kB
+         ->  Parallel Seq Scan on s  (cost=0.00..912610.88 rows=47013288 width=4) (actual time=0.024..26834.079 rows=100000000 loops=1)
+ Planning Time: 2.074 ms
+ Execution Time: 221635.877 ms
+(9 rows)
+

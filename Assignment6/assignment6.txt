@@ -1,0 +1,127 @@
+CREATE DATABASE
+Problem 1
+CREATE TABLE
+CREATE FUNCTION
+DELETE 0
+INSERT 0 8
+  x  | y 
+-----+---
+  78 | 1
+ 108 | 5
+   1 | 1
+   5 | 7
+   7 | 6
+  75 | 1
+  56 | 4
+ 107 | 4
+  49 | 3
+  40 | 5
+(10 rows)
+
+DELETE 8
+INSERT 0 8
+  x  | y 
+-----+---
+  86 | 5
+  90 | 4
+ 139 | 1
+ 137 | 3
+  23 | 3
+  32 | 1
+  88 | 5
+  55 | 5
+  51 | 5
+ 149 | 2
+(10 rows)
+
+Problem 2
+CREATE TABLE
+INSERT 0 5
+CREATE TABLE
+CREATE FUNCTION
+DELETE 8
+INSERT 0 5
+      skill       | cnt 
+------------------+-----
+ AI               | 459
+ Databases        |  99
+ OperatingSystems |  96
+ Networks         |  92
+ Programming      |  85
+(5 rows)
+
+DELETE 5
+INSERT 0 5
+      skill       | cnt 
+------------------+-----
+ AI               | 433
+ Databases        | 188
+ Networks         | 102
+ OperatingSystems |  63
+ Programming      |  45
+(5 rows)
+
+CREATE TABLE
+INSERT 0 6
+CREATE TABLE
+INSERT 0 14
+CREATE TABLE
+INSERT 0 14
+Problem 5
+CREATE TABLE
+INSERT 0 5
+CREATE TABLE
+INSERT 0 4
+CREATE FUNCTION
+CREATE FUNCTION
+ sid  | sname |  major  | byear 
+------+-------+---------+-------
+ s100 | Eric  | CS      |  1998
+ s101 | Nick  | Math    |  1991
+ s102 | Chris | Biology |  1997
+(3 rows)
+
+ sid  | sname  |  major  | byear 
+------+--------+---------+-------
+ s100 | Eric   | CS      |  1998
+ s101 | Nick   | Math    |  1991
+ s102 | Chris  | Biology |  1997
+ s103 | Dinska | CS      |  1978
+(4 rows)
+
+ sid | sname | major | byear 
+-----+-------+-------+-------
+(0 rows)
+
+Problem 6
+DROP FUNCTION
+CREATE TABLE
+CREATE FUNCTION
+INSERT 0 5
+CREATE TABLE
+CREATE FUNCTION
+INSERT 0 4
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+CREATE FUNCTION
+ sid  | sname |  major  | byear 
+------+-------+---------+-------
+ s100 | Eric  | CS      |  1998
+ s102 | Chris | Biology |  1997
+ s101 | Nick  | Math    |  1991
+(3 rows)
+
+ sid  | sname  |  major  | byear 
+------+--------+---------+-------
+ s100 | Eric   | CS      |  1998
+ s102 | Chris  | Biology |  1997
+ s101 | Nick   | Math    |  1991
+ s103 | Dinska | CS      |  1978
+(4 rows)
+
+ sid | sname | major | byear 
+-----+-------+-------+-------
+(0 rows)
+
+DROP DATABASE

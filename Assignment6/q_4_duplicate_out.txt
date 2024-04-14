@@ -1,0 +1,268 @@
+10
+ makes 
+-------
+ 
+(1 row)
+
+VACUUM
+Distinct
+                                            QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1.12..1.23 rows=10 width=4) (actual time=0.015..0.016 rows=6 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 24kB
+   ->  Seq Scan on s  (cost=0.00..1.10 rows=10 width=4) (actual time=0.006..0.007 rows=10 loops=1)
+ Planning Time: 0.205 ms
+ Execution Time: 0.104 ms
+(6 rows)
+
+Group by
+                                            QUERY PLAN                                             
+---------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1.12..1.23 rows=10 width=4) (actual time=0.010..0.011 rows=6 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 24kB
+   ->  Seq Scan on s  (cost=0.00..1.10 rows=10 width=4) (actual time=0.003..0.005 rows=10 loops=1)
+ Planning Time: 0.023 ms
+ Execution Time: 0.022 ms
+(6 rows)
+
+100
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                              QUERY PLAN                                               
+-------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=41.88..43.88 rows=200 width=4) (actual time=0.038..0.046 rows=58 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 40kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.007..0.015 rows=100 loops=1)
+ Planning Time: 0.170 ms
+ Execution Time: 0.067 ms
+(6 rows)
+
+Group by
+                                              QUERY PLAN                                               
+-------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=41.88..43.88 rows=200 width=4) (actual time=0.033..0.041 rows=58 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 40kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.005..0.013 rows=100 loops=1)
+ Planning Time: 0.016 ms
+ Execution Time: 0.054 ms
+(6 rows)
+
+1000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                               QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=41.88..43.88 rows=200 width=4) (actual time=0.336..0.397 rows=644 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 89kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.017..0.120 rows=1000 loops=1)
+ Planning Time: 0.204 ms
+ Execution Time: 0.452 ms
+(6 rows)
+
+Group by
+                                               QUERY PLAN                                               
+--------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=41.88..43.88 rows=200 width=4) (actual time=0.392..0.490 rows=644 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 89kB
+   ->  Seq Scan on s  (cost=0.00..35.50 rows=2550 width=4) (actual time=0.008..0.129 rows=1000 loops=1)
+ Planning Time: 0.019 ms
+ Execution Time: 0.540 ms
+(6 rows)
+
+10000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                                QUERY PLAN                                                 
+-----------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=188.44..190.44 rows=200 width=4) (actual time=4.540..5.818 rows=6268 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 737kB
+   ->  Seq Scan on s  (cost=0.00..159.75 rows=11475 width=4) (actual time=0.021..1.608 rows=10000 loops=1)
+ Planning Time: 0.404 ms
+ Execution Time: 6.370 ms
+(6 rows)
+
+Group by
+                                                QUERY PLAN                                                 
+-----------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=188.44..190.44 rows=200 width=4) (actual time=3.994..5.390 rows=6268 loops=1)
+   Group Key: x
+   Batches: 1  Memory Usage: 737kB
+   ->  Seq Scan on s  (cost=0.00..159.75 rows=11475 width=4) (actual time=0.015..1.163 rows=10000 loops=1)
+ Planning Time: 0.046 ms
+ Execution Time: 5.884 ms
+(6 rows)
+
+100000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                                  QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1855.06..1857.06 rows=200 width=4) (actual time=57.022..75.715 rows=63203 loops=1)
+   Group Key: x
+   Batches: 5  Memory Usage: 4161kB  Disk Usage: 672kB
+   ->  Seq Scan on s  (cost=0.00..1572.65 rows=112965 width=4) (actual time=0.019..18.421 rows=100000 loops=1)
+ Planning Time: 0.283 ms
+ Execution Time: 82.752 ms
+(6 rows)
+
+Group by
+                                                  QUERY PLAN                                                   
+---------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1855.06..1857.06 rows=200 width=4) (actual time=41.189..55.513 rows=63203 loops=1)
+   Group Key: x
+   Batches: 5  Memory Usage: 4161kB  Disk Usage: 672kB
+   ->  Seq Scan on s  (cost=0.00..1572.65 rows=112965 width=4) (actual time=0.014..11.671 rows=100000 loops=1)
+ Planning Time: 0.043 ms
+ Execution Time: 60.273 ms
+(6 rows)
+
+1000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                                    QUERY PLAN                                                     
+-------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=18529.69..18531.69 rows=200 width=4) (actual time=344.880..656.191 rows=631827 loops=1)
+   Group Key: x
+   Batches: 33  Memory Usage: 4201kB  Disk Usage: 23528kB
+   ->  Seq Scan on s  (cost=0.00..15708.75 rows=1128375 width=4) (actual time=0.015..111.318 rows=1000000 loops=1)
+ Planning Time: 0.240 ms
+ Execution Time: 700.434 ms
+(6 rows)
+
+Group by
+                                                                QUERY PLAN                                                                
+------------------------------------------------------------------------------------------------------------------------------------------
+ Group  (cost=11311.62..11359.29 rows=200 width=4) (actual time=335.729..610.330 rows=631827 loops=1)
+   Group Key: x
+   ->  Gather Merge  (cost=11311.62..11358.29 rows=400 width=4) (actual time=335.727..511.318 rows=849256 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Sort  (cost=10311.60..10312.10 rows=200 width=4) (actual time=307.620..341.215 rows=283085 loops=3)
+               Sort Key: x
+               Sort Method: external merge  Disk: 4296kB
+               Worker 0:  Sort Method: external merge  Disk: 3736kB
+               Worker 1:  Sort Method: external merge  Disk: 3696kB
+               ->  Partial HashAggregate  (cost=10301.95..10303.95 rows=200 width=4) (actual time=117.980..218.716 rows=283085 loops=3)
+                     Group Key: x
+                     Batches: 21  Memory Usage: 4169kB  Disk Usage: 7752kB
+                     Worker 0:  Batches: 21  Memory Usage: 4169kB  Disk Usage: 7424kB
+                     Worker 1:  Batches: 21  Memory Usage: 4169kB  Disk Usage: 7416kB
+                     ->  Parallel Seq Scan on s  (cost=0.00..9126.56 rows=470156 width=4) (actual time=0.012..33.909 rows=333333 loops=3)
+ Planning Time: 0.045 ms
+ Execution Time: 648.819 ms
+(18 rows)
+
+10000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                                      QUERY PLAN                                                       
+-----------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=185288.50..185290.50 rows=200 width=4) (actual time=3426.553..7201.318 rows=6321789 loops=1)
+   Group Key: x
+   Batches: 261  Memory Usage: 4161kB  Disk Usage: 263304kB
+   ->  Seq Scan on s  (cost=0.00..157080.40 rows=11283240 width=4) (actual time=0.019..1277.851 rows=10000000 loops=1)
+ Planning Time: 0.305 ms
+ Execution Time: 7583.698 ms
+(6 rows)
+
+Group by
+                                                                  QUERY PLAN                                                                  
+----------------------------------------------------------------------------------------------------------------------------------------------
+ Group  (cost=104024.54..104072.21 rows=200 width=4) (actual time=3861.303..6507.622 rows=6321789 loops=1)
+   Group Key: x
+   ->  Gather Merge  (cost=104024.54..104071.21 rows=400 width=4) (actual time=3861.302..5531.546 rows=8503490 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Sort  (cost=103024.52..103025.02 rows=200 width=4) (actual time=3725.951..4095.771 rows=2834497 loops=3)
+               Sort Key: x
+               Sort Method: external merge  Disk: 40248kB
+               Worker 0:  Sort Method: external merge  Disk: 38224kB
+               Worker 1:  Sort Method: external merge  Disk: 38256kB
+               ->  Partial HashAggregate  (cost=103014.88..103016.88 rows=200 width=4) (actual time=1116.604..2607.227 rows=2834497 loops=3)
+                     Group Key: x
+                     Batches: 117  Memory Usage: 4265kB  Disk Usage: 94344kB
+                     Worker 0:  Batches: 117  Memory Usage: 4265kB  Disk Usage: 89520kB
+                     Worker 1:  Batches: 117  Memory Usage: 4265kB  Disk Usage: 89016kB
+                     ->  Parallel Seq Scan on s  (cost=0.00..91261.50 rows=4701350 width=4) (actual time=0.046..327.312 rows=3333333 loops=3)
+ Planning Time: 0.039 ms
+ Execution Time: 6852.965 ms
+(18 rows)
+
+100000000
+VACUUM
+ makes 
+-------
+ 
+(1 row)
+
+Distinct
+                                                        QUERY PLAN                                                         
+---------------------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1852876.63..1852878.63 rows=200 width=4) (actual time=34299.315..100529.100 rows=63207261 loops=1)
+   Group Key: x
+   Batches: 9921  Memory Usage: 5449kB  Disk Usage: 2475032kB
+   ->  Seq Scan on s  (cost=0.00..1570796.90 rows=112831890 width=4) (actual time=0.216..13967.835 rows=100000000 loops=1)
+ Planning Time: 1.735 ms
+ Execution Time: 104309.693 ms
+(6 rows)
+
+Group by
+                                                                    QUERY PLAN                                                                    
+--------------------------------------------------------------------------------------------------------------------------------------------------
+ Group  (cost=1031153.76..1031201.43 rows=200 width=4) (actual time=64334.516..106590.451 rows=63207261 loops=1)
+   Group Key: x
+   ->  Gather Merge  (cost=1031153.76..1031200.43 rows=400 width=4) (actual time=64334.515..90926.736 rows=85037731 loops=1)
+         Workers Planned: 2
+         Workers Launched: 2
+         ->  Sort  (cost=1030153.74..1030154.24 rows=200 width=4) (actual time=64056.096..69911.946 rows=28345910 loops=3)
+               Sort Key: x
+               Sort Method: external merge  Disk: 389416kB
+               Worker 0:  Sort Method: external merge  Disk: 385544kB
+               Worker 1:  Sort Method: external merge  Disk: 390064kB
+               ->  Partial HashAggregate  (cost=1030144.09..1030146.09 rows=200 width=4) (actual time=12239.376..39793.731 rows=28345910 loops=3)
+                     Group Key: x
+                     Batches: 2937  Memory Usage: 5449kB  Disk Usage: 912120kB
+                     Worker 0:  Batches: 2937  Memory Usage: 5449kB  Disk Usage: 902376kB
+                     Worker 1:  Batches: 2937  Memory Usage: 5449kB  Disk Usage: 913264kB
+                     ->  Parallel Seq Scan on s  (cost=0.00..912610.88 rows=47013288 width=4) (actual time=1.747..4903.552 rows=33333333 loops=3)
+ Planning Time: 0.126 ms
+ Execution Time: 112190.118 ms
+(18 rows)
+
